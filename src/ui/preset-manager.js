@@ -58,7 +58,7 @@ class PresetManager {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(this.presets));
     } catch (e) {
-      throw new Error('localStorage 写入失败: ' + e.message);
+      throw new Error('localStorage write failed: ' + e.message);
     }
   }
 
@@ -67,7 +67,7 @@ class PresetManager {
     titleRow.className = 'preset-title-row';
     this.dirtyBadge = document.createElement('span');
     this.dirtyBadge.className = 'preset-dirty-badge';
-    this.dirtyBadge.textContent = '● 未保存';
+    this.dirtyBadge.textContent = 'unsaved';
     this.dirtyBadge.style.display = 'none';
     titleRow.append(this.dirtyBadge);
     this.container.appendChild(titleRow);
@@ -86,10 +86,10 @@ class PresetManager {
     saveRow.className = 'preset-row';
     this.nameInput = document.createElement('input');
     this.nameInput.type = 'text';
-    this.nameInput.placeholder = '预设名称…';
+    this.nameInput.placeholder = 'Preset name…';
     this.nameInput.className = 'preset-name-input';
     this._saveBtn = document.createElement('button');
-    this._saveBtn.textContent = '保存';
+    this._saveBtn.textContent = 'Save';
     this._saveBtn.className = 'btn btn-primary';
     this._savePending = false;
     this._savePendingTimer = null;
@@ -101,15 +101,15 @@ class PresetManager {
     const ioRow = document.createElement('div');
     ioRow.className = 'preset-row';
     const delBtn = document.createElement('button');
-    delBtn.textContent = '删除';
+    delBtn.textContent = 'Delete';
     delBtn.className = 'btn btn-warn';
     delBtn.addEventListener('click', () => this._onDelete());
     const expBtn = document.createElement('button');
-    expBtn.textContent = '导出';
+    expBtn.textContent = 'Export';
     expBtn.className = 'btn';
     expBtn.addEventListener('click', () => this._onExport());
     const impBtn = document.createElement('button');
-    impBtn.textContent = '导入';
+    impBtn.textContent = 'Import';
     impBtn.className = 'btn';
     impBtn.addEventListener('click', () => this._fileInput.click());
     this._fileInput = document.createElement('input');
@@ -129,7 +129,7 @@ class PresetManager {
     this.select.innerHTML = '';
     const def = document.createElement('option');
     def.value = '';
-    def.textContent = `-- 选择 ${this.sideLabel} 预设 --`;
+    def.textContent = `-- Select ${this.sideLabel} preset --`;
     this.select.appendChild(def);
     for (const name of Object.keys(this.presets)) {
       const opt = document.createElement('option');
@@ -154,9 +154,9 @@ class PresetManager {
   _onSaveClick() {
     if (!this._savePending) {
       const name = this.nameInput.value.trim();
-      if (!name) { alert('请输入预设名称'); return; }
+      if (!name) { alert('Please enter a preset name'); return; }
       this._savePending = true;
-      this._saveBtn.textContent = '确认保存？';
+      this._saveBtn.textContent = 'Confirm save?';
       this._saveBtn.className = 'btn btn-save-confirm';
       this._savePendingTimer = setTimeout(() => this._resetSaveBtn(), 3000);
     } else {
@@ -168,7 +168,7 @@ class PresetManager {
   _resetSaveBtn() {
     clearTimeout(this._savePendingTimer);
     this._savePending = false;
-    this._saveBtn.textContent = '保存';
+    this._saveBtn.textContent = 'Save';
     this._saveBtn.className = 'btn btn-primary';
   }
 
@@ -180,7 +180,7 @@ class PresetManager {
     try {
       await this._saveToBackend();
     } catch (e) {
-      alert('保存失败: ' + e.message);
+      alert('Save failed: ' + e.message);
       return;
     }
     this._takeSnapshot();
@@ -192,14 +192,14 @@ class PresetManager {
   async _onDelete() {
     const name = this.select.value;
     if (!name) return;
-    if (!confirm(`删除预设 "${name}"?`)) return;
+    if (!confirm(`Delete preset "${name}"?`)) return;
     delete this.presets[name];
     this.currentName = '';
     this._savedSnapshot = null;
     try {
       await this._saveToBackend();
     } catch (e) {
-      alert('删除失败: ' + e.message);
+      alert('Delete failed: ' + e.message);
       return;
     }
     this._setDirty(false);
@@ -228,7 +228,7 @@ class PresetManager {
         this._refreshSelect();
         this.broadcastReload?.();
       } catch (err) {
-        alert('JSON 解析失败: ' + err.message);
+        alert('JSON parse failed: ' + err.message);
       }
     };
     reader.readAsText(file);

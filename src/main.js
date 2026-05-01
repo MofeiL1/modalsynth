@@ -25,7 +25,7 @@ async function main() {
     statusEl.className = `status ${cls}`;
   };
 
-  setStatus('正在加载 Faust 编译器 (~15 MB,首次较慢)…');
+  setStatus('Loading Faust compiler (~15 MB, slow on first load)…');
 
   const faustEngine = new FaustEngine();
 
@@ -62,10 +62,10 @@ async function main() {
   // Init Faust (async, doesn't block UI)
   try {
     await faustEngine.init(dspCode);
-    setStatus('就绪 — 点击页面任意位置启用音频', 'ready');
-    footerEl.textContent = `Faust ready · DSP from core/modal-resonator.dsp · 单 voice 测试模式`;
+    setStatus('Ready — click anywhere to enable audio', 'ready');
+    footerEl.textContent = `Faust ready · DSP from dsp/modal-resonator.dsp · single-voice test mode`;
   } catch (err) {
-    setStatus(`Faust 加载失败: ${err.message}`, 'error');
+    setStatus(`Faust failed to load: ${err.message}`, 'error');
     console.error(err);
     return;
   }
@@ -84,7 +84,7 @@ async function main() {
   const resumeAudio = async () => {
     await faustEngine.resume();
     if (faustEngine.audioContext?.state === 'running') {
-      setStatus('就绪', 'ready');
+      setStatus('Ready', 'ready');
     }
   };
   document.addEventListener('click', resumeAudio, { once: true });
@@ -112,5 +112,5 @@ async function main() {
 
 main().catch((e) => {
   console.error(e);
-  document.getElementById('status').textContent = `启动失败: ${e.message}`;
+  document.getElementById('status').textContent = `Startup failed: ${e.message}`;
 });

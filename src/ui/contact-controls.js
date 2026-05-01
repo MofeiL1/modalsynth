@@ -34,7 +34,7 @@ class ContactControls {
     topRow.className = 'contact-row';
 
     const impactBtn = document.createElement('button');
-    impactBtn.textContent = '🔨 Impact';
+    impactBtn.textContent = 'Impact';
     impactBtn.className = 'btn btn-primary';
     impactBtn.addEventListener('click', async () => {
       await this.faustEngine?.resume();
@@ -53,7 +53,7 @@ class ContactControls {
       this.faustEngine?.setGate(this.gateOpen);
     });
     const gateText = document.createElement('span');
-    gateText.textContent = 'Gate (摩擦持续)';
+    gateText.textContent = 'Gate (sustain friction)';
     gateLabel.append(gateCheckbox, gateText);
 
     topRow.append(impactBtn, gateLabel);
@@ -160,7 +160,7 @@ class AlphaControl {
     const labelRow = document.createElement('div');
     labelRow.className = 'param-label-row';
     const label = document.createElement('label');
-    label.textContent = 'α (耦合强度)';
+    label.textContent = 'α (coupling strength)';
     const valSpan = document.createElement('span');
     valSpan.className = 'param-value';
     valSpan.textContent = this.value.toFixed(3);
@@ -188,7 +188,7 @@ class AlphaControl {
     hint.style.fontSize = '11px';
     hint.style.color = 'var(--text-secondary)';
     hint.style.marginTop = '4px';
-    hint.textContent = '0=独立振动 · 0.3=典型接触 · 1=刚性耦合';
+    hint.textContent = '0 = independent · 0.3 = typical contact · 1 = rigid coupling';
 
     group.append(labelRow, slider, hint);
     this.container.appendChild(group);
