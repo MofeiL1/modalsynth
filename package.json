@@ -4,10 +4,10 @@
   "private": true,
   "type": "module",
   "description": "Browser-based Faust playground for the SoundEngineVR parametric modal-resonator DSP. Tweak 7 material parameters in real time and audition the dual-bank pair voice with cross-damping coupling.",
-  "homepage": "https://mofei.me/modalsynth/",
+  "homepage": "https://modalsynth.mofei.me/",
   "scripts": {
     "dev": "node scripts/copy-faust-libs.js && vite",
-    "build": "node scripts/copy-faust-libs.js && vite build && node scripts/postbuild.js",
+    "build": "node scripts/copy-faust-libs.js && vite build",
     "preview": "vite preview",
     "setup": "node scripts/copy-faust-libs.js"
   },

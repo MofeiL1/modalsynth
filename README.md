@@ -2,7 +2,7 @@
 
 Browser-based Faust playground for the [SoundEngineVR](https://github.com/MofeiL1/SoundEngineVR) parametric modal-resonator DSP. Tweak 7 material parameters in real time, audition the dual-bank pair voice with cross-damping coupling, save presets locally.
 
-**Live at https://mofei.me/modalsynth/**
+**Live at https://modalsynth.mofei.me/**
 
 ## What it is
 
@@ -27,9 +27,9 @@ Faust WASM libraries are auto-copied from `node_modules` into `public/faustwasm/
 - Connect this repo to Cloudflare Pages
 - Build command: `npm run build`
 - Build output: `dist`
-- Custom domain: `mofei.me` (path `/modalsynth/` — Vite `base` is set so all asset URLs are prefixed)
+- Custom domain: `modalsynth.mofei.me`
 
-[`public/_headers`](public/_headers) configures COOP / COEP for SharedArrayBuffer, which the Faust WASM runtime requires.
+[`public/_headers`](public/_headers) configures COOP / COEP for SharedArrayBuffer, which the Faust WASM runtime requires. Vite copies it from `public/` into `dist/` during build.
 
 ## DSP source sync
 
