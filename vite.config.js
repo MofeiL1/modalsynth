@@ -11,8 +11,12 @@
 
 import { defineConfig } from 'vite';
 
-export default defineConfig(({ command }) => ({
-  base: command === 'build' ? '/modalsynth/' : '/',
+export default defineConfig(({ mode }) => ({
+  // Production base is '/modalsynth/' for both `vite build` and `vite preview`
+  // (mode='production' in both). Dev (`vite dev`, mode='development') stays
+  // at '/' because Faust WASM has trouble with non-root base in the dev
+  // server's module-graph rewriting.
+  base: mode === 'production' ? '/modalsynth/' : '/',
   build: {
     outDir: 'dist/modalsynth',
     emptyOutDir: true,
@@ -26,7 +30,15 @@ export default defineConfig(({ command }) => ({
     // is a few hundred KB larger but well under any meaningful budget.
     minify: false,
   },
+  // COOP/COEP needed for both dev (vite serve) and local production preview
+  // (vite preview). Vite has separate config sections for each.
   server: {
+    headers: {
+      'Cross-Origin-Opener-Policy': 'same-origin',
+      'Cross-Origin-Embedder-Policy': 'require-corp',
+    },
+  },
+  preview: {
     headers: {
       'Cross-Origin-Opener-Policy': 'same-origin',
       'Cross-Origin-Embedder-Policy': 'require-corp',
