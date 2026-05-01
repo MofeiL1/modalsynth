@@ -1,0 +1,5 @@
+node_modules/
+dist/
+public/faustwasm/
+.vite/
+.DS_Store

@@ -1,0 +1,74 @@
+{
+  "Mallet": {
+    "freq": 800,
+    "decay": 0.05,
+    "hf_damping": 0.5,
+    "inharmonicity": 0.7,
+    "tonality": 0.4,
+    "hardness": 0.85,
+    "roughness": 0.3
+  },
+  "Steel Plate": {
+    "freq": 700,
+    "decay": 1.8,
+    "hf_damping": 0.04,
+    "inharmonicity": 0.95,
+    "tonality": 0.85,
+    "hardness": 0.95,
+    "roughness": 0.15
+  },
+  "Wood": {
+    "freq": 400,
+    "decay": 0.8,
+    "hf_damping": 0.3,
+    "inharmonicity": 0.6,
+    "tonality": 0.45,
+    "hardness": 0.55,
+    "roughness": 0.5
+  },
+  "Plastic": {
+    "freq": 600,
+    "decay": 0.3,
+    "hf_damping": 0.4,
+    "inharmonicity": 0.55,
+    "tonality": 0.6,
+    "hardness": 0.65,
+    "roughness": 0.25
+  },
+  "Stone": {
+    "freq": 800,
+    "decay": 0.3,
+    "hf_damping": 0.25,
+    "inharmonicity": 0.6,
+    "tonality": 0.4,
+    "hardness": 0.85,
+    "roughness": 0.4
+  },
+  "Concrete": {
+    "freq": 180,
+    "decay": 0.2,
+    "hf_damping": 0.55,
+    "inharmonicity": 0.45,
+    "tonality": 0.15,
+    "hardness": 0.7,
+    "roughness": 0.7
+  },
+  "Skin": {
+    "freq": 200,
+    "decay": 0.1,
+    "hf_damping": 0.8,
+    "inharmonicity": 0.2,
+    "tonality": 0.3,
+    "hardness": 0.4,
+    "roughness": 0.6
+  },
+  "Rubber": {
+    "freq": 120,
+    "decay": 0.5,
+    "hf_damping": 0.85,
+    "inharmonicity": 0.05,
+    "tonality": 0.85,
+    "hardness": 0.15,
+    "roughness": 0.6
+  }
+}

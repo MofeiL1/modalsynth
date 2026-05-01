@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SoundEngineVR — 材质编辑器</title>
+  <link rel="stylesheet" href="/src/styles/main.css">
+</head>
+<body>
+  <div id="app">
+    <header id="topbar">
+      <div class="topbar-title">SoundEngineVR Material Editor</div>
+      <div id="status" class="status">正在初始化…</div>
+    </header>
+    <main id="main-content">
+      <section id="left-pane" class="panel">
+        <div class="panel-section">
+          <h3>预设 — 材质 A</h3>
+          <div id="preset-A"></div>
+        </div>
+        <div class="panel-section">
+          <h3>材质 A 参数</h3>
+          <div id="param-A"></div>
+        </div>
+      </section>
+
+      <section id="center-pane" class="panel">
+        <div class="panel-section">
+          <h3>接触模拟</h3>
+          <div id="contact-controls"></div>
+        </div>
+        <div class="panel-section">
+          <h3>Cross-damping (α)</h3>
+          <div id="alpha-control"></div>
+        </div>
+      </section>
+
+      <section id="right-pane" class="panel">
+        <div class="panel-section">
+          <h3>预设 — 材质 B (对手)</h3>
+          <div id="preset-B"></div>
+        </div>
+        <div class="panel-section">
+          <h3>材质 B 参数</h3>
+          <div id="param-B"></div>
+        </div>
+      </section>
+    </main>
+    <footer id="status-bar">
+      <span id="footer-msg">等待 Faust 初始化…</span>
+    </footer>
+  </div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
